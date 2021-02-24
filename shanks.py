@@ -1,7 +1,7 @@
 import math
 ## set vars ##
 g = 2
-h = 893
+h = 974
 modulus = 1373
 g_powers = {}
 h_inverses = {}
@@ -31,6 +31,6 @@ for keyq in g_powers:
         if g_powers[keyq] == h_inverses[keyp]:
             x = keyq+(keyp*n)
             print('discrete log: ', x)
-            break
+            
             
 
