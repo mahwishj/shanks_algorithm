@@ -1,34 +1,35 @@
 import math
 ## set vars ##
 g = 2
-h = 974
+h = 893
 modulus = 1373
-g_powers = {}
-h_inverses = {}
+baby_steps = {}
+giant_steps = {}
 
 n = 1 + math.floor(math.sqrt(modulus-1))
 print(n)
 
 for i in range(n):
-    g_powers[i] = pow(g, i, modulus)
+    baby_steps[i] = pow(g, i, modulus)
 
-print(g_powers)
+print(baby_steps)
 print()
 
 
 ## g^(-1*n), and assuming g and modulus are relatively prime
 inverse = pow(g, (modulus-2)*n, modulus)
+print(inverse)
 
 for j in range(n): 
-    h_inverses[j] =  (h*pow(inverse, j)) % modulus
+    giant_steps[j] =  (h*pow(inverse, j)) % modulus
     
 
-print(h_inverses)
+print(giant_steps)
 print()
 
-for keyq in g_powers:
-    for keyp in h_inverses:
-        if g_powers[keyq] == h_inverses[keyp]:
+for keyq in baby_steps:
+    for keyp in giant_steps:
+        if baby_steps[keyq] == giant_steps[keyp]:
             x = keyq+(keyp*n)
             print('discrete log: ', x)
             
